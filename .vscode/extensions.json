@@ -1,0 +1,18 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+  // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    "esbenp.prettier-vscode", // Formatação de código
+    "PKief.material-icon-theme", // Ícones de arquivos
+    "rocketseat.theme-omni", // Tema de cores
+    "ms-dotnettools.csharp", // Suporte oficial a C# (.NET) da Microsoft
+    "ms-dotnettools.vscode-dotnet-runtime", // Runtime para depuração de apps .NET
+    "eamodio.gitlens", // GitLens: ferramentas avançadas de Git (opcional mas muito usado)
+    "editorconfig.editorconfig", // Suporte ao padrão .editorconfig (padronização de código)
+    "streetsidesoftware.code-spell-checker" // Spell Checker para evitar erros de digitação nos códigos e comentários (opcional)
+  ],
+  // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+  "unwantedRecommendations": []
+}
