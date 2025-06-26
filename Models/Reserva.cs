@@ -6,11 +6,21 @@ namespace DesafioProjetoHospedagem.Models
         public Suite Suite { get; set; }
         public int DiasReservados { get; set; }
 
-        public Reserva () {}
+        // public Reserva () {}
 
         public Reserva(int diasReservados)
         {
             DiasReservados = diasReservados;
+        }
+
+        public class SuiteException : ArgumentException
+        {
+            public SuiteException(string message) : base(message) { }
+        }
+
+        public class HospedeException : ArgumentException
+        {
+            public HospedeException(string message) : base(message) { }
         }
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
@@ -18,21 +28,36 @@ namespace DesafioProjetoHospedagem.Models
             // Validação: lista nula ou vazia
             if (hospedes == null || hospedes.Count == 0)
             {
-                throw new ArgumentException("A lista de hóspedes não pode ser nula ou vazia.");
+                throw new HospedeException("A lista de hóspedes não pode ser nula ou vazia.");
             }
+
             // Se a capacidade for suficiente, atribui os hóspedes à propriedade Hospedes
-            else if (Suite.Capacidade >= hospedes.Count)
+            if (Suite.Capacidade >= hospedes.Count)
             {
                 Hospedes = hospedes;
+                return; // importante para não continuar e lançar exceção abaixo
             }
-            else
-            {
-                throw new ArgumentException("A capacidade da suíte é menor que o número de hóspedes informados.");
-            }
+
+            throw new HospedeException("A capacidade da suíte é menor que o número de hóspedes informados.");
         }
 
         public void CadastrarSuite(Suite suite)
         {
+            // Validação: suíte nula, capacidade inválida ou valor da diária inválido
+            if (suite == null)
+            {
+                throw new SuiteException("A suíte não pode ser nula.");
+            }
+            if (suite.Capacidade <= 0)
+            {
+                throw new SuiteException("A capacidade da suíte deve ser maior que zero.");
+            }
+            if (suite.ValorDiaria <= 0)
+            {
+                throw new SuiteException("O valor da diária da suíte não pode ser 0 ou negativo.");
+            }
+
+            // Se a suíte for válida, atribui à propriedade Suite
             Suite = suite;
         }
 

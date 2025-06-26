@@ -19,7 +19,7 @@ foreach (var p in hospedeParaCadastrar)
     try
     {
         var hospede = new Pessoa(p.Nome, p.Sobrenome);
-        // hospedes.Add(hospede);
+        hospedes.Add(hospede);
         Console.WriteLine($"Hóspede cadastrado com sucesso: {hospede.NomeCompleto}");
     }
     catch (ArgumentException ex)
@@ -42,9 +42,17 @@ try
     Console.WriteLine($"Hóspedes cadastrados com sucesso. Total de hóspedes: {hospedes.Count}");
     Console.WriteLine($"Tipo de suíte: {suite.TipoSuite}. Capacidade: {suite.Capacidade}. Valor da diária: {suite.ValorDiaria:C}");
 }
-catch (ArgumentException ex)
+catch (Reserva.HospedeException ex)
 {
     Console.WriteLine($"Erro ao cadastrar hóspedes: {ex.Message}");
+}
+catch (Reserva.SuiteException ex)
+{
+    Console.WriteLine($"Erro ao cadastrar suíte: {ex.Message}");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Erro inesperado: {ex.Message}");
 }
 
 
