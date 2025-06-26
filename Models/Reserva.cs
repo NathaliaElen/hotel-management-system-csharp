@@ -6,11 +6,13 @@ namespace DesafioProjetoHospedagem.Models
         public Suite Suite { get; set; }
         public int DiasReservados { get; set; }
 
-        // public Reserva () {}
-
         public Reserva(int diasReservados)
         {
             DiasReservados = diasReservados;
+        }
+        public Reserva(int diasReservados, Suite suite) : this(diasReservados)
+        {
+            CadastrarSuite(suite); // Garante as validações já existentes
         }
 
         public class SuiteException : ArgumentException
