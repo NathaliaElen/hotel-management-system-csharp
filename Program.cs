@@ -19,7 +19,7 @@ foreach (var p in hospedeParaCadastrar)
     try
     {
         var hospede = new Pessoa(p.Nome, p.Sobrenome);
-        hospedes.Add(hospede);
+        // hospedes.Add(hospede);
         Console.WriteLine($"Hóspede cadastrado com sucesso: {hospede.NomeCompleto}");
     }
     catch (ArgumentException ex)
@@ -28,14 +28,27 @@ foreach (var p in hospedeParaCadastrar)
     }
 }
 
-// // Cria a suíte
-// Suite suite = new Suite(tipoSuite: "Premium", capacidade: 2, valorDiaria: 30);
+// Cria a suíte
+Suite suite = new Suite(tipoSuite: "Premium", capacidade: 4, valorDiaria: 3000);
 
-// // Cria uma nova reserva, passando a suíte e os hóspedes
-// Reserva reserva = new Reserva(diasReservados: 5);
-// reserva.CadastrarSuite(suite);
-// reserva.CadastrarHospedes(hospedes);
+try
+{
+    // Cria uma nova reserva, passando a suíte e os hóspedes
+    Reserva reserva = new Reserva(diasReservados: 5);
+    reserva.CadastrarSuite(suite);
+    reserva.CadastrarHospedes(hospedes);
 
-// // Exibe a quantidade de hóspedes e o valor da diária
+    Console.WriteLine("\nDetalhes da Reserva:");
+    Console.WriteLine($"Hóspedes cadastrados com sucesso. Total de hóspedes: {hospedes.Count}");
+    Console.WriteLine($"Tipo de suíte: {suite.TipoSuite}. Capacidade: {suite.Capacidade}. Valor da diária: {suite.ValorDiaria:C}");
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine($"Erro ao cadastrar hóspedes: {ex.Message}");
+}
+
+
+// Exibe a quantidade de hóspedes e o valor da diária
+// Console.WriteLine($"\nExibe a quantidade de hóspedes totais e o valor da diária:");
 // Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
 // Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");

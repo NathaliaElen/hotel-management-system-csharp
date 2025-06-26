@@ -6,7 +6,7 @@ namespace DesafioProjetoHospedagem.Models
         public Suite Suite { get; set; }
         public int DiasReservados { get; set; }
 
-        public Reserva() { }
+        public Reserva () {}
 
         public Reserva(int diasReservados)
         {
@@ -15,16 +15,19 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
+            // Validação: lista nula ou vazia
+            if (hospedes == null || hospedes.Count == 0)
+            {
+                throw new ArgumentException("A lista de hóspedes não pode ser nula ou vazia.");
+            }
+            // Se a capacidade for suficiente, atribui os hóspedes à propriedade Hospedes
+            else if (Suite.Capacidade >= hospedes.Count)
             {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                throw new ArgumentException("A capacidade da suíte é menor que o número de hóspedes informados.");
             }
         }
 
