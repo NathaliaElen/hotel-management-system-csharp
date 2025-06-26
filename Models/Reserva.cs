@@ -63,9 +63,14 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            int quantidadeHospedes = 0;
+
+            if (Hospedes != null)
+            {
+                quantidadeHospedes = Hospedes.Count;
+            }
+            
+            return quantidadeHospedes;
         }
 
         public decimal CalcularValorDiaria()

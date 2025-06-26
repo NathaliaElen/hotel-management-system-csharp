@@ -39,8 +39,13 @@ try
     reserva.CadastrarHospedes(hospedes);
 
     Console.WriteLine("\nDetalhes da Reserva:");
-    Console.WriteLine($"Hóspedes cadastrados com sucesso. Total de hóspedes: {hospedes.Count}");
+    Console.WriteLine($"Hóspedes cadastrados com sucesso.");
     Console.WriteLine($"Tipo de suíte: {suite.TipoSuite}. Capacidade: {suite.Capacidade}. Valor da diária: {suite.ValorDiaria:C}");
+
+    // Exibe a quantidade de hóspedes e o valor da diária
+    Console.WriteLine($"\nExibe a quantidade de hóspedes totais e o valor da diária:");
+    Console.WriteLine($"Total de Hóspedes: {reserva.ObterQuantidadeHospedes()}");
+    // Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
 }
 catch (Reserva.HospedeException ex)
 {
@@ -55,8 +60,3 @@ catch (Exception ex)
     Console.WriteLine($"Erro inesperado: {ex.Message}");
 }
 
-
-// Exibe a quantidade de hóspedes e o valor da diária
-// Console.WriteLine($"\nExibe a quantidade de hóspedes totais e o valor da diária:");
-// Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-// Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
