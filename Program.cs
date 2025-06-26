@@ -34,7 +34,7 @@ Suite suite = new Suite(tipoSuite: "Premium", capacidade: 4, valorDiaria: 3000);
 try
 {
     // Cria uma nova reserva, passando a suíte e os hóspedes
-    Reserva reserva = new Reserva(diasReservados: 5);
+    Reserva reserva = new Reserva(diasReservados: 12);
     reserva.CadastrarSuite(suite);
     reserva.CadastrarHospedes(hospedes);
 
@@ -43,9 +43,8 @@ try
     Console.WriteLine($"Tipo de suíte: {suite.TipoSuite}. Capacidade: {suite.Capacidade}. Valor da diária: {suite.ValorDiaria:C}");
 
     // Exibe a quantidade de hóspedes e o valor da diária
-    Console.WriteLine($"\nExibe a quantidade de hóspedes totais e o valor da diária:");
     Console.WriteLine($"Total de Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-    // Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
+    Console.WriteLine($"Valor total das diárias: {reserva.CalcularValorDiaria():C}");
 }
 catch (Reserva.HospedeException ex)
 {
